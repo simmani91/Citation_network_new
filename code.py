@@ -21,13 +21,12 @@ class Item:
 
 
 def save_processed_data(item,out_path):
+	#열심히 저장하는 공간
 	global f_out_id_year_title		
 	global f_out_cited			
 	global f_out_publisher		
 	global f_out_author 			
 	global f_out_id_year_abstract	
-
-
 
 	f_out_id_year_title.write(item.item_id.strip()+"|"+str(item.year)+"|"+item.title.strip()+"\n")
 	f_out_publisher.write(item.item_id.strip()+"|"+str(item.year)+"|"+item.publisher.strip()+"\n")
@@ -35,12 +34,20 @@ def save_processed_data(item,out_path):
 
 	f_out_author.write(item.item_id.strip()+"|"+str(item.year)+"|")
 	for author in item.author[:-1]:
-		f_out_author.write("," + author.strip())
+		f_out_author.write( author.strip()+ ",")
 	f_out_author.write(item.author[-1].strip()+"\n")
 
 	for c in item.cite:
 		f_out_cited.write(item.item_id.strip()+","+c.strip()+"\n")
 
+
+def save_customized_data(item,out_path):
+	#새로운 processed 데이터를 만들때 이곳에서 작업하면 된다. 
+	global f_out_id_year_title		
+	global f_out_cited			
+	global f_out_publisher		
+	global f_out_author 			
+	global f_out_id_year_abstract	
 
 
 def processed_data(in_path, out_path):
@@ -98,6 +105,7 @@ def processed_data(in_path, out_path):
 		elif(flag == "!"):
 			item.abstract = line[2:]
 			save_processed_data(item,out_path)
+			save_customized_data(item,out_path)
 			item = Item()
 
 	print "=============	Parsing raw data end 	=============="
