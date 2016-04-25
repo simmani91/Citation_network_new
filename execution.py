@@ -15,10 +15,10 @@ import _1_raw_to_processed_parser
 
 cite_year_divider_in_path = "../2.processed_data/"
 cite_year_divider_out_path = "../3.time_based_data/1.cite_relation_devide"
-code.cite_year_divider(cite_year_divider_in_path, cite_year_divider_out_path)
+#code.cite_year_divider(cite_year_divider_in_path, cite_year_divider_out_path)
 
 data_descriptor_in_path = "../2.processed_data/"
 data_descriptor_out_path = "../1.raw_data/0.data_description/"
 #code.data_descriptor(data_descriptor_in_path, data_descriptor_out_path)
 #code.data_descriptor_2(data_descriptor_out_path, data_descriptor_out_path)
-cite_data_refining(data_descriptor_out_path, data_descriptor_out_path)
+code.cite_data_refining(data_descriptor_in_path, data_descriptor_in_path)
