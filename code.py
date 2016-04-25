@@ -122,11 +122,7 @@ def data_descriptor_2(in_path, out_path):
 
 
 
-
-def cite_year_divider(in_path, out_path):
-	#연도별로 인용 링크를 나누어준다.
-	#만약 에러가 발생하면(인용하고있는 연도가 시기적으로 맞지 않는 경우) 이를 에러로 출력한다. 
-
+def cite_data_refining(in_path, out_path):
 	f_in_1 = open(in_path + "all_cite.txt","r")
 	f_in_2 = open( in_path + "all_id_year_title.txt", "r")
 
@@ -146,23 +142,13 @@ def cite_year_divider(in_path, out_path):
 
 	f_out_cited_count_in_the_title_list = open("../2.processed_data/cited_count_in_the_title_list.txt","w")
 	f_out_cited_count_out_the_title_list = open("../2.processed_data/cited_count_out_the_title_list.txt","w")
-	for i in range(1951, 2016):
-		f_out = open(out_path+str(i) + "_cite.csv","w")
-		f_out.write("Source,Target\n")
+
 		for j in cite:
 			parse = j.split(",")
 			source = parse[0].strip()
 			target = parse[1].strip()
 			
-			if (target not in item):
-				
-			else:
-
-			
-		print len(cite)
-		print error_cnt
-		print error_cnt2
-		error_cnt = 0
-		error_cnt2= 0
-		f_out.close()
-	f_error.close()
+		if (target not in item):
+			f_out_cited_count_out_the_title_list.write(j)
+		else:
+			f_out_cited_count_out_the_title_list.write(j)
